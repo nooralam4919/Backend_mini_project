@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/stylesheets/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- Full-screen background with text and padding -->
+    <div class="bg-zinc-500 h-screen text-white p-10 ">
+        <h1 class="text-3xl tracking-tighter text-gray-800">Create user</h1>
+        <div class="user flex gap-5 mt-6 flex-wrap">
+          <% users.forEach((user) => { %>
+            <div class="max-w-72 p-4 bg-zinc-700 rounded-lg">
+                <div class="w-full h-52 rounded-lg bg-blue-500 overflow-hidden">
+                    <img class="w-full h-full" src=" <%= user.image %>" alt="">
+                </div>
+                <h3 class="text-xl text-center "><%= user.name %></h3>
+                <h3 class="text-m text-center text-gray-200"><%= user.email  %></h3>
+                <div class="flex gap-5 mt-6 ml-6">
+                    <a class="text-zinc-300"  href="/edit/<%= user._id  %>">edit</a>
+                    <a class="text-red-300" id="delete"  href="/delete/<%= user._id  %>">Delete</a>
+                </div>
+            </div>
+        <%  }) %>
+        </div>
+
+              <!-- to redirect user to read -->
+      <div class=" text-blue-900 nav mt-5">
+        <a href="/">Back to Home</a>
+    </div>
+  </body>
+</html>
